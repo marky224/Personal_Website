@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ABOUT ME on Mark Marquez</title>
+    <link>https://MarkAndrewMarquez.com/about_me/</link>
+    <description>Recent content in ABOUT ME on Mark Marquez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Mark Marquez</copyright>
+    
+	<atom:link href="https://MarkAndrewMarquez.com/about_me/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>FUNNEL OPTIMIZATION</title>
+      <link>https://MarkAndrewMarquez.com/about_me/funnel-optimization/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://MarkAndrewMarquez.com/about_me/funnel-optimization/</guid>
+      <description>Constantly measures conversion rates throughout the lead generation funnel (i.e., cold connects to calls set) in order to focus on the area that will have the greatest returns (i.e., low email response rates). Excels at using sales technology (i.e., SalesForce), data, and statistics to track and predict lead flow. Leverages best practices developed by industry experts and internal team resources by creating SDR playbooks that include ideal client profiles, outreach messaging (i.</description>
+    </item>
+    
+    <item>
+      <title>LEAD GENERATION</title>
+      <link>https://MarkAndrewMarquez.com/about_me/lead-generation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://MarkAndrewMarquez.com/about_me/lead-generation/</guid>
+      <description>Leverages best practices in cold-calling, email and social media in order to maximize all new leads coming in from the top of the [lead generation] funnel. Leverages systemic outbound approaches, via account-based prospecting, in order to engage various levels of the organizations with their key goals in mind. Outbound outreach includes anywhere between 8-14 steps, with messaging tailored towards different goals at each touch point, to maximize interactions and provide commercial insight that opens up future conversation.</description>
+    </item>
+    
+    <item>
+      <title>LEAD SOURCING</title>
+      <link>https://MarkAndrewMarquez.com/about_me/lead-sourcing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://MarkAndrewMarquez.com/about_me/lead-sourcing/</guid>
+      <description>Uses lead sourcing to predictably add new leads to the top of the lead generation funnel. Pays very close attention to the number of new leads entering the pipeline, along with the quality of each lead. Takes note of stakeholder(s), industry and/or use case to proactively reach out to similar prospects via outbound outreach. Very cost-effective at leveraging and combining lead sourcing and sales technology. Constantly up-to-date with market activity and always refining lead sourcing strategy accordingly.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Techs on Mark Marquez</title>
+    <link>https://MarkAndrewMarquez.com/techs/</link>
+    <description>Recent content in Techs on Mark Marquez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Mark Marquez</copyright>
+    <lastBuildDate>Sat, 01 Aug 2020 19:47:09 +0200</lastBuildDate>
+    
+	<atom:link href="https://MarkAndrewMarquez.com/techs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>HTML</title>
+      <link>https://MarkAndrewMarquez.com/techs/html/</link>
+      <pubDate>Sat, 01 Aug 2020 19:47:09 +0200</pubDate>
+      
+      <guid>https://MarkAndrewMarquez.com/techs/html/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://MarkAndrewMarquez.com/techs/python/</link>
+      <pubDate>Sat, 01 Aug 2020 19:47:09 +0200</pubDate>
+      
+      <guid>https://MarkAndrewMarquez.com/techs/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SQL</title>
+      <link>https://MarkAndrewMarquez.com/techs/sql/</link>
+      <pubDate>Sat, 01 Aug 2020 19:47:09 +0200</pubDate>
+      
+      <guid>https://MarkAndrewMarquez.com/techs/sql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Stats</title>
+      <link>https://MarkAndrewMarquez.com/techs/stats/</link>
+      <pubDate>Mon, 01 Jun 2020 19:47:09 +0200</pubDate>
+      
+      <guid>https://MarkAndrewMarquez.com/techs/stats/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

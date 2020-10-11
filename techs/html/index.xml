@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HTML on Mark Marquez</title>
+    <link>https://MarkAndrewMarquez.com/techs/html/</link>
+    <description>Recent content in HTML on Mark Marquez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Mark Marquez</copyright>
+    <lastBuildDate>Sat, 01 Aug 2020 19:47:09 +0200</lastBuildDate>
+    
+	<atom:link href="https://MarkAndrewMarquez.com/techs/html/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>VC Funding Scrap and Store</title>
+      <link>https://MarkAndrewMarquez.com/portfolio/vc-scraping-project/</link>
+      <pubDate>Sat, 01 Aug 2020 19:47:09 +0200</pubDate>
+      
+      <guid>https://MarkAndrewMarquez.com/portfolio/vc-scraping-project/</guid>
+      <description>VC Funding Scrap and Store Overall Project Goals Analyzing data on new funding rounds and venture-funded companies, helping teams maximize the ROI of their new innovations / markets by:
+ Collecting data on venture funding rounds and the venture-funded companies. Cleaning/formatting the collected data and sorting it by funding date and time. Storing information into various datatypes such as excel, csv and SQL.  Abstract With data that is sourced from the website &amp;lsquo;VCNewsDaily&amp;rsquo;, this project collects information on new venture funding rounds, along with the details on the funding round and the venture-funded companies.</description>
+    </item>
+    
+  </channel>
+</rss>
