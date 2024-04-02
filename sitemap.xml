@@ -80,6 +80,12 @@
   </url>
   
   <url>
+    <loc>https://MarkAndrewMarquez.com/portfolio/it-ds-pandemic-exp/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://MarkAndrewMarquez.com/designs/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

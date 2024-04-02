@@ -50,5 +50,14 @@
       <description>Project Summary Through a dataset provided by the US government, cities in LA County will be grouped into clusters based on sociodemographic scores to develop benchmarks for each cluster. This will help city officials identify what are the biggest areas for improvement based on cluster (i.e., mental health to upper-class vs school quality to lower-class). Along with mapping out LA County based on socioeconomic clusters to help identify potential visual patterns.</description>
     </item>
     
+    <item>
+      <title></title>
+      <link>https://MarkAndrewMarquez.com/portfolio/it-ds-pandemic-exp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://MarkAndrewMarquez.com/portfolio/it-ds-pandemic-exp/</guid>
+      <description>Update to New Articles  title: Real Estate Price Predictor - Kaggle Build description: This is the description of our sample project date: &amp;ldquo;2020-06-01T19:47:09+02:00&amp;rdquo; jobDate: 2020 work: [Data Exploration, Data Cleaning, Visualizations, Business Intelligence, Machine Learning, Predictive Modeling] techs: [Python, Stats] thumbnail: kaggle-real-estate-project/images/Real%20Estate%20Model%20Scores.PNG projectUrl: https://www.kaggle.com/markmarquez/real-estate-price-predictor Real Estate Price Predictor - Kaggle Rebuild Project Goals Analyzing data on historical real estate sales to help a potential buyer find undervalued properties by:</description>
+    </item>
+    
   </channel>
 </rss>
