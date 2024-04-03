@@ -5,8 +5,7 @@
   <url>
     <loc>https://MarkAndrewMarquez.com/</loc>
     <lastmod>2020-08-01T19:47:09+02:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -80,13 +79,43 @@
   </url>
   
   <url>
-    <loc>https://MarkAndrewMarquez.com/portfolio/it-ds-pandemic-exp/</loc>
+    <loc>https://MarkAndrewMarquez.com/techs/active-directory/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://MarkAndrewMarquez.com/techs/bash/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://MarkAndrewMarquez.com/techs/business-intelligence/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://MarkAndrewMarquez.com/designs/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://MarkAndrewMarquez.com/techs/hardware-and-software-repair/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://MarkAndrewMarquez.com/portfolio/it-ds-pandemic-exp/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://MarkAndrewMarquez.com/techs/powershell/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
