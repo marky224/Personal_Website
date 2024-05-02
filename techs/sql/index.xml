@@ -31,5 +31,15 @@
       <description>Using CRM Data to Identify Ideal Customer Profiles and Predict New Sales Abstract: Through a dataset provided by KPMG, an Australian bicycle shop owner was looking to maximize their marketing ROI by analyzing data on their customers and transactions for the past 3 years. This was accomplished by developing customer profiles based on data, along with predicting new sales that referenced data on previous transactions and customer demographics. Results provided a data-driven ideal customer profile, along with a baseline predictive model for customers that have been in the CRM for longer than 3 years.</description>
     </item>
     
+    <item>
+      <title>My Journey into Data Science and IT During the COVID-19 Pandemic</title>
+      <link>https://MarkAndrewMarquez.com/portfolio/it-ds-pandemic-exp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://MarkAndrewMarquez.com/portfolio/it-ds-pandemic-exp/</guid>
+      <description>My Journey into Data Science and IT During the COVID-19 Pandemic Introduction: An Unexpected Turn In the wake of my unexpected layoff in February 2020, just days after my birthday and as the world teetered on the brink of lockdown, I embarked on an unforeseen and transformative journey through the realms of Information Technology (IT) and Data Science.
+The Shift to Technology My academic foundation in Cognitive Sciences and experience in brain imaging research and MatLab programming had initially pointed me towards a scientific career.</description>
+    </item>
+    
   </channel>
 </rss>

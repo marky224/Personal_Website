@@ -48,5 +48,50 @@
       <description></description>
     </item>
     
+    <item>
+      <title>Active Directory</title>
+      <link>https://MarkAndrewMarquez.com/techs/active-directory/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://MarkAndrewMarquez.com/techs/active-directory/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bash</title>
+      <link>https://MarkAndrewMarquez.com/techs/bash/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://MarkAndrewMarquez.com/techs/bash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Business Intelligence</title>
+      <link>https://MarkAndrewMarquez.com/techs/business-intelligence/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://MarkAndrewMarquez.com/techs/business-intelligence/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hardware and Software Repair</title>
+      <link>https://MarkAndrewMarquez.com/techs/hardware-and-software-repair/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://MarkAndrewMarquez.com/techs/hardware-and-software-repair/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PowerShell</title>
+      <link>https://MarkAndrewMarquez.com/techs/powershell/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://MarkAndrewMarquez.com/techs/powershell/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
