@@ -4,19 +4,75 @@
   
   <url>
     <loc>https://MarkAndrewMarquez.com/</loc>
-    <lastmod>2020-08-01T19:47:09+02:00</lastmod>
+    <lastmod>2024-08-11T19:47:09+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://MarkAndrewMarquez.com/techs/html/</loc>
-    <lastmod>2020-08-01T19:47:09+02:00</lastmod>
+    <loc>https://MarkAndrewMarquez.com/techs/ai-automation/</loc>
+    <lastmod>2024-08-11T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://MarkAndrewMarquez.com/techs/cloud-computing/</loc>
+    <lastmod>2024-08-11T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://MarkAndrewMarquez.com/techs/cybersecurity/</loc>
+    <lastmod>2024-08-11T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://MarkAndrewMarquez.com/techs/firewall/</loc>
+    <lastmod>2024-08-11T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://MarkAndrewMarquez.com/portfolio/it-phoenixmgt-exp/</loc>
+    <lastmod>2024-08-11T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://MarkAndrewMarquez.com/techs/networking/</loc>
+    <lastmod>2024-08-11T19:47:09+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://MarkAndrewMarquez.com/portfolio/</loc>
+    <lastmod>2024-08-11T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://MarkAndrewMarquez.com/techs/</loc>
+    <lastmod>2024-08-11T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://MarkAndrewMarquez.com/techs/ubiquiti/</loc>
+    <lastmod>2024-08-11T19:47:09+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://MarkAndrewMarquez.com/techs/html/</loc>
     <lastmod>2020-08-01T19:47:09+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -31,13 +87,6 @@
   
   <url>
     <loc>https://MarkAndrewMarquez.com/techs/sql/</loc>
-    <lastmod>2020-08-01T19:47:09+02:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://MarkAndrewMarquez.com/techs/</loc>
     <lastmod>2020-08-01T19:47:09+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
