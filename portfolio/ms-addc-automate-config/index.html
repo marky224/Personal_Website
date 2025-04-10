@@ -118,37 +118,37 @@
       <h2 id="the-automation-process-from-manual-to-automated">The Automation Process: From Manual to Automated</h2>
       <p>Manually provisioning a Domain Controller involves several critical steps, each of which can introduce variability or errors if not handled carefully. My scripts automate these steps, ensuring a smooth and error-free process. Here’s how the automation handles each stage:</p>
       <ol>
-        <li style="margin-bottom: 20px;"><strong>System Preparation</strong>
+        <li><strong>System Preparation</strong>
           <ul>
-            <li><strong>Manual Task</strong>: Install Windows updates and reboot to ensure the server is up to date.</li>
+            <li style="margin-top: 20px;"><strong>Manual Task</strong>: Install Windows updates and reboot to ensure the server is up to date.</li>
             <li><strong>Automation</strong>: The optional <code>00-Install-Updates.ps1</code> script checks for updates, installs them, and reboots if necessary, eliminating the need for manual intervention.</li>
           </ul>
         </li>
-        <li style="margin-bottom: 20px;"><strong>Prerequisite Validation</strong>
+        <li><strong>Prerequisite Validation</strong>
           <ul>
             <li><strong>Manual Task</strong>: Verify the OS version, administrative privileges, and sufficient disk space.</li>
             <li><strong>Automation</strong>: <code>01-Check-Prerequisites.ps1</code> performs these checks automatically and provides clear error messages if any conditions are not met, preventing issues later in the process.</li>
           </ul>
         </li>
-        <li style="margin-bottom: 20px;"><strong>Network Configuration</strong>
+        <li><strong>Network Configuration</strong>
           <ul>
             <li><strong>Manual Task</strong>: Set a static IP address (e.g., <code>192.168.0.10</code>), configure DNS to an external provider (e.g., <code>8.8.8.8</code>), and ensure network connectivity.</li>
             <li><strong>Automation</strong>: <code>02-Set-StaticIP.ps1</code> detects the active network adapter, assigns the static IP, sets Google DNS, and validates connectivity—all without user input.</li>
           </ul>
         </li>
-        <li style="margin-bottom: 20px;"><strong>AD DS Role Installation</strong>
+        <li><strong>AD DS Role Installation</strong>
           <ul>
             <li><strong>Manual Task</strong>: Install the Active Directory Domain Services (AD DS) role and management tools via Server Manager or PowerShell.</li>
             <li><strong>Automation</strong>: <code>03-Install-ADDSRole.ps1</code> silently installs the AD DS role and tools while logging progress for transparency.</li>
           </ul>
         </li>
-        <li style="margin-bottom: 20px;"><strong>DC Promotion</strong>
+        <li><strong>DC Promotion</strong>
           <ul>
             <li><strong>Manual Task</strong>: Promote the server to a Domain Controller, create a new forest (e.g., <code>msp.local</code>), set a Directory Services Restore Mode (DSRM) password, and reboot.</li>
             <li><strong>Automation</strong>: <code>04-Promote-DomainController.ps1</code> handles the promotion, securely manages the DSRM password, creates the forest, and triggers a reboot in a single step.</li>
           </ul>
         </li>
-        <li style="margin-bottom: 20px;"><strong>Post-Configuration</strong>
+        <li><strong>Post-Configuration</strong>
           <ul>
             <li><strong>Manual Task</strong>: Update DNS to point to the DC itself (e.g., <code>192.168.0.10</code>), add external DNS forwarders, and apply security hardening (e.g., disable SMBv1).</li>
             <li><strong>Automation</strong>: <code>05-Post-Configuration.ps1</code> reconfigures DNS, adds forwarders (e.g., <code>8.8.8.8</code>, <code>8.8.4.4</code>), and applies security settings tailored for MSP environments, reducing the need for manual hardening.</li>
@@ -158,7 +158,7 @@
 
       <h2 id="benefits-of-automation">Benefits of Automation</h2>
       <ul>
-        <li style="margin-bottom: 10px;"><strong>Speed</strong>: Reduces provisioning time from hours to minutes.</li>
+        <li style="margin-top: 10px;"><strong>Speed</strong>: Reduces provisioning time from hours to minutes.</li>
         <li><strong>Consistency</strong>: Ensures uniform setup across multiple servers or client environments.</li>
         <li><strong>Error Reduction</strong>: Automated checks and logging catch potential issues early.</li>
         <li><strong>Scalability</strong>: Easily repeatable for deploying multiple Domain Controllers.</li>
