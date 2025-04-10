@@ -126,31 +126,31 @@
         </li>
         <li><strong>Prerequisite Validation</strong>
           <ul>
-            <li><strong>Manual Task</strong>: Verify the OS version, administrative privileges, and sufficient disk space.</li>
+            <li style="margin-top: 20px;"><strong>Manual Task</strong>: Verify the OS version, administrative privileges, and sufficient disk space.</li>
             <li><strong>Automation</strong>: <code>01-Check-Prerequisites.ps1</code> performs these checks automatically and provides clear error messages if any conditions are not met, preventing issues later in the process.</li>
           </ul>
         </li>
         <li><strong>Network Configuration</strong>
           <ul>
-            <li><strong>Manual Task</strong>: Set a static IP address (e.g., <code>192.168.0.10</code>), configure DNS to an external provider (e.g., <code>8.8.8.8</code>), and ensure network connectivity.</li>
+            <li style="margin-top: 20px;"><strong>Manual Task</strong>: Set a static IP address (e.g., <code>192.168.0.10</code>), configure DNS to an external provider (e.g., <code>8.8.8.8</code>), and ensure network connectivity.</li>
             <li><strong>Automation</strong>: <code>02-Set-StaticIP.ps1</code> detects the active network adapter, assigns the static IP, sets Google DNS, and validates connectivity—all without user input.</li>
           </ul>
         </li>
         <li><strong>AD DS Role Installation</strong>
           <ul>
-            <li><strong>Manual Task</strong>: Install the Active Directory Domain Services (AD DS) role and management tools via Server Manager or PowerShell.</li>
+            <li style="margin-top: 20px;"><strong>Manual Task</strong>: Install the Active Directory Domain Services (AD DS) role and management tools via Server Manager or PowerShell.</li>
             <li><strong>Automation</strong>: <code>03-Install-ADDSRole.ps1</code> silently installs the AD DS role and tools while logging progress for transparency.</li>
           </ul>
         </li>
         <li><strong>DC Promotion</strong>
           <ul>
-            <li><strong>Manual Task</strong>: Promote the server to a Domain Controller, create a new forest (e.g., <code>msp.local</code>), set a Directory Services Restore Mode (DSRM) password, and reboot.</li>
+            <li style="margin-top: 20px;"><strong>Manual Task</strong>: Promote the server to a Domain Controller, create a new forest (e.g., <code>msp.local</code>), set a Directory Services Restore Mode (DSRM) password, and reboot.</li>
             <li><strong>Automation</strong>: <code>04-Promote-DomainController.ps1</code> handles the promotion, securely manages the DSRM password, creates the forest, and triggers a reboot in a single step.</li>
           </ul>
         </li>
         <li><strong>Post-Configuration</strong>
           <ul>
-            <li><strong>Manual Task</strong>: Update DNS to point to the DC itself (e.g., <code>192.168.0.10</code>), add external DNS forwarders, and apply security hardening (e.g., disable SMBv1).</li>
+            <li style="margin-top: 20px;"><strong>Manual Task</strong>: Update DNS to point to the DC itself (e.g., <code>192.168.0.10</code>), add external DNS forwarders, and apply security hardening (e.g., disable SMBv1).</li>
             <li><strong>Automation</strong>: <code>05-Post-Configuration.ps1</code> reconfigures DNS, adds forwarders (e.g., <code>8.8.8.8</code>, <code>8.8.4.4</code>), and applies security settings tailored for MSP environments, reducing the need for manual hardening.</li>
           </ul>
         </li>
@@ -158,8 +158,8 @@
 
       <h2 id="benefits-of-automation">Benefits of Automation</h2>
       <ul>
-        <li style="margin-top: 10px;"><strong>Speed</strong>: Reduces provisioning time from hours to minutes.</li>
-        <li><strong>Consistency</strong>: Ensures uniform setup across multiple servers or client environments.</li>
+        <li><strong>Speed</strong>: Reduces provisioning time from hours to minutes.</li>
+        <li style="margin-top: 10px;"><strong>Consistency</strong>: Ensures uniform setup across multiple servers or client environments.</li>
         <li><strong>Error Reduction</strong>: Automated checks and logging catch potential issues early.</li>
         <li><strong>Scalability</strong>: Easily repeatable for deploying multiple Domain Controllers.</li>
       </ul>
@@ -190,9 +190,9 @@
           <pre><code class="language-bash">git clone https://github.com/marky224/Active-Directory-Domain-Controller-Provisioning.git
 cd Active-Directory-Domain-Controller-Provisioning</code></pre>
         </li>
-        <li style="margin-bottom: 20px;"><strong>Ensure Prerequisites Are Met</strong>:
+        <li><strong>Ensure Prerequisites Are Met</strong>:
           <ul>
-            <li>Fresh installation of Windows Server 2025.</li>
+            <li style="margin-top: 20px;">Fresh installation of Windows Server 2025.</li>
             <li>Administrative privileges.</li>
             <li>Server in bridged mode or on a physical network with a reserved static IP (e.g., <code>192.168.0.10</code>).</li>
             <li>Internet access with Google DNS (<code>8.8.8.8</code>).</li>
