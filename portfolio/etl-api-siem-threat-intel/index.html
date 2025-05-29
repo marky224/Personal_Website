@@ -25,7 +25,7 @@
   <meta itemprop="description" content="A project automating threat intelligence collection, processing, and visualization using AlienVault OTX, PostgreSQL, Splunk, and Python.">
   <meta itemprop="wordCount" content="423">
 
-  <meta itemprop="keywords" content="Python, PostgreSQL, Splunk, Cybersecurity, ETL, Data Engineering" />
+  <meta itemprop="keywords" content="Python, PostgreSQL, Splunk, Cybersecurity, ETL, API, LLM, Data Engineering" />
 </head>
 <body>
   <header style="background-image:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('https://MarkAndrewMarquez.com/images/big-data-background.jpg')">
@@ -236,6 +236,8 @@
         </li>
       </ul>
       <p>Both LLMs highlighted the need for enhanced protection against phishing and advanced persistent threats (APTs), especially for critical infrastructure and government systems.</p>
+      <p><img src="images/LLM-summary-python.jpg" alt="LLM Summary Python Script"></p>
+      <p>These insights were generated based on the latest pipeline run on May 28, 2025, at 20:19:49 CDT.</p>
       
       <h2 id="why-it-matters">Why It Matters</h2>
       <p><em>threat-intel-etl</em> isn’t just a technical exercise—it’s a practical tool for cybersecurity teams. By automating data collection and presenting insights in an intuitive format, it saves analysts hours of manual work and helps them focus on responding to threats. The project also demonstrates my ability to bridge data engineering and cybersecurity, combining ETL pipelines with visualization to deliver real-world value.</p>
@@ -251,14 +253,14 @@
         <li><strong>API Key Management</strong>: Gained practical experience in integrating and managing API keys for external services like AlienVault OTX, Grok, and Claude, ensuring secure and efficient access to their APIs for data extraction and analysis.</li>
         <li><strong>Problem-Solving</strong>: Debugging complex issues, from API rate limits to database connection errors, while keeping the pipeline robust.</li>
       </ul>
-      <p>It also reinforced the importance of modularity. By structuring the codebase into separate modules for extraction, transformation, and loading, I made it easier to maintain and extend—a principle I carry into all my projects.</p>
+      <p>It also reinforced the importance of modularity. By structuring the codebase into separate modules for extraction, transformation, loading, querying, and LLM analysis, I made it easier to maintain and extend—a principle I carry into all my projects.</p>
 
       <h2 id="usage-and-configuration">Usage and Configuration</h2>
       <p>To use the pipeline, follow these steps:</p>
       <ol>
         <li><strong>Clone the Repository</strong>:
           <pre><code class="language-bash">git clone https://github.com/marky224/Threat-Intel-ETL.git
-          cd Threat-Intel-ETL</code></pre>
+cd Threat-Intel-ETL</code></pre>
         </li>
         <li><strong>Ensure Prerequisites Are Met</strong>:
           <ul>
