@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <title>Building a Dedicated AI Assistant PC with OpenClaw, Ollama, and Microsoft Teams</title>
+  <link rel='canonical' href='https://MarkAndrewMarquez.com/portfolio/openclaw-ai-pc/' />
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1' />
+  <meta name='description' content='A project building a dedicated AI assistant PC using OpenClaw, Ollama, and Microsoft Teams for local LLM inference on Ubuntu with an NVIDIA RTX 4080 GPU.' />
+  <meta name='theme-color' content='#FD3519' />
+
+  <link rel="shortcut icon" href="images/Lightning%20bolt.ico" type="image/x-icon" />
+  <link rel="icon" href="images/Lightning%20bolt.ico" type="image/x-icon" />
+
+  <meta name="generator" content="Hugo 0.72.0" />
+
+  <link rel="stylesheet" href="https://MarkAndrewMarquez.com/sass/style.min.8a1658d134a4b54730b66789206b2cf14c1b006a6de3f3fde6302f925b6e01f5.css" integrity="sha256-ihZY0TSktUcwtmeJIGss8UwbAGpt4/P95jAvkltuAfU=" media="screen">
+  <link rel="stylesheet" href="https://MarkAndrewMarquez.com/syntax.min.css" integrity="" media="screen">
+
+  <meta property="og:title" content="Building a Dedicated AI Assistant PC with OpenClaw, Ollama, and Microsoft Teams" />
+  <meta property="og:description" content="A project building a dedicated AI assistant PC using OpenClaw, Ollama, and Microsoft Teams for local LLM inference on Ubuntu with an NVIDIA RTX 4080 GPU." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://MarkAndrewMarquez.com/portfolio/openclaw-ai-pc/" />
+
+  <meta itemprop="name" content="Building a Dedicated AI Assistant PC with OpenClaw, Ollama, and Microsoft Teams">
+  <meta itemprop="description" content="A project building a dedicated AI assistant PC using OpenClaw, Ollama, and Microsoft Teams for local LLM inference on Ubuntu with an NVIDIA RTX 4080 GPU.">
+  <meta itemprop="wordCount" content="1320">
+
+  <meta itemprop="keywords" content="Ubuntu, OpenClaw, Ollama, Gemma, Microsoft Teams, Azure, AI, Automation, LLM, Tailscale" />
+</head>
+<body>
+  <header style="background-image:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('https://MarkAndrewMarquez.com/images/big-data-background.jpg')">
+    <div class="intro">
+      <div class="logo-container">
+        <a href="/">
+          <img src='https://MarkAndrewMarquez.com/images/Headshot%20-%20cropped.png' alt="Profile PORTFOLIO" class="rounded-logo">
+        </a>
+      </div>
+      <h2>Mark Marquez</h2>
+      <h3>IT & Automation Specialist | Cybersecurity | Data-Engineering | AI Enthusiast</h3>
+      <div class="menu">
+        <p><a href="https://github.com/marky224">GitHub</a></p>
+        <p><a href="/portfolio/">Project Portfolio</a></p>
+      </div>
+    </div>
+    <div class="socials">
+      <a href="https://github.com/marky224/Resume-Portfolio" class="social-link" target="_blank" rel="noopener">
+        <div class="icon">
+          <svg width="35px" height="35px" viewBox="0 0 115 115" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+            <path d="M102.679 0H12.32C5.52 0 0 5.519 0 12.321v90.358C0 109.48 5.519 115 12.321 115h90.358c6.802 0 12.321-5.519 12.321-12.321V12.32C115 5.52 109.481 0 102.679 0zM71.182 98.494c-2.156.385-2.952-.95-2.952-2.053 0-1.386.051-8.471.051-14.195 0-4.005-1.335-6.546-2.9-7.881C74.878 73.313 84.89 72.003 84.89 55.6c0-4.671-1.669-7.007-4.39-10.01.436-1.105 1.9-5.648-.436-11.552-3.568-1.104-11.731 4.595-11.731 4.595-3.389-.95-7.06-1.438-10.679-1.438-3.62 0-7.29.488-10.679 1.438 0 0-8.163-5.699-11.73-4.595-2.337 5.878-.899 10.422-.437 11.551-2.72 3.004-4.004 5.34-4.004 10.011 0 16.326 9.574 17.712 19.072 18.765-1.232 1.104-2.336 3.003-2.72 5.724-2.44 1.104-8.677 3.004-12.4-3.568-2.335-4.056-6.545-4.39-6.545-4.39-4.159-.05-.282 2.619-.282 2.619 2.772 1.283 4.723 6.212 4.723 6.212 2.49 7.624 14.4 5.057 14.4 5.057 0 3.568.052 9.37.052 10.422 0 1.104-.77 2.438-2.952 2.053C27.21 92.821 15.35 76.701 15.35 57.86c0-23.564 18.02-41.456 41.585-41.456s42.663 17.892 42.663 41.456c.026 18.842-11.474 34.988-28.416 40.635zM46 82.81c-.488.103-.95-.102-1.001-.436-.051-.385.282-.719.77-.822.488-.05.95.154 1.001.488.077.334-.257.668-.77.77zm-2.439-.23c0 .333-.385.615-.898.615-.565.052-.95-.23-.95-.616 0-.333.385-.616.899-.616.487-.051.95.231.95.616zm-3.516-.283c-.103.334-.616.488-1.053.334-.488-.103-.821-.488-.719-.822.103-.334.617-.488 1.053-.385.513.154.847.54.719.873zm-3.158-1.386c-.23.282-.718.23-1.104-.154-.385-.334-.487-.822-.23-1.053.23-.282.718-.23 1.103.154.334.334.462.847.231 1.053zm-2.336-2.336c-.23.154-.667 0-.95-.385-.282-.385-.282-.822 0-1.001.283-.231.72-.052.95.333.283.385.283.847 0 1.053zm-1.668-2.49c-.231.23-.616.103-.899-.154-.282-.334-.333-.719-.102-.899.23-.23.616-.102.898.154.282.334.334.72.103.899zm-1.72-1.9c-.103.231-.436.283-.719.103-.334-.154-.488-.436-.385-.667.103-.154.385-.231.719-.103.334.18.488.462.385.667z"/>
+          </svg>
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/in/markandrewmarquez/" class="social-link" target="_blank" rel="noopener">
+        <div class="icon">
+          <svg width="35px" height="35px" viewBox="0 0 115 115" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+            <path d="M106.786 0H8.189C3.67 0 0 3.722 0 8.291v98.418C0 111.278 3.67 115 8.189 115h98.597c4.518 0 8.214-3.722 8.214-8.291V8.29C115 3.722 111.304 0 106.786 0zm-72.03 98.571H17.713V43.69h17.07V98.57h-.025zm-8.522-62.377c-5.467 0-9.882-4.44-9.882-9.883 0-5.442 4.415-9.882 9.882-9.882 5.442 0 9.883 4.44 9.883 9.882a9.87 9.87 0 0 1-9.883 9.883zm72.414 62.377H81.604V71.875c0-6.366-.129-14.555-8.856-14.555-8.882 0-10.242 6.931-10.242 14.093V98.57H45.46V43.69h16.352v7.495h.23c2.285-4.312 7.855-8.856 16.147-8.856 17.25 0 20.458 11.372 20.458 26.158V98.57z"/>
+          </svg>
+        </div>
+      </a>
+    </div>
+  </header>
+
+  <div class="content-wrapper">
+    <div class="breadcrumb">
+      <span><a href="https://MarkAndrewMarquez.com/"></a> / </span>
+      <span><a href="https://MarkAndrewMarquez.com/portfolio/">PORTFOLIO</a> / </span>
+      <span class="active"><a href="https://MarkAndrewMarquez.com/portfolio/openclaw-ai-pc/">Building a Dedicated AI Assistant PC with OpenClaw, Ollama, and Microsoft Teams</a></span>
+    </div>
+
+    <main id="content" class="portfolio">
+      <h1>Building a Dedicated AI Assistant PC with OpenClaw, Ollama, and Microsoft Teams</h1>
+      <div class="tags">
+        <div class="techs portfolio-tags">
+          <div class="icon">
+            <svg width="18px" height="18px" viewBox="0 0 115 115" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+              <path d="M112.125 86.25H103.5V34.5c0-6.325-5.175-11.5-11.5-11.5H23c-6.325 0-11.5 5.175-11.5 11.5v51.75H2.875A2.883 2.883 0 0 0 0 89.125v8.625C0 107.237 7.763 115 17.25 115h80.5c9.487 0 17.25-7.763 17.25-17.25v-8.625a2.883 2.883 0 0 0-2.875-2.875zm-92-51.75c0-1.558 1.317-2.875 2.875-2.875h69c1.558 0 2.875 1.317 2.875 2.875v51.75h-74.75V34.5zm86.25 63.25c0 4.756-3.869 8.625-8.625 8.625h-80.5c-4.756 0-8.625-3.869-8.625-8.625v-2.875H41.13c1.001 1.687 2.764 2.875 4.87 2.875h23c2.106 0 3.867-1.188 4.87-2.875h32.505v2.875zM49.892 70.015l2.032-2.032a2.875 2.875 0 0 0 0-4.066L45.506 57.5l6.416-6.418a2.875 2.875 0 0 0 0-4.067l-2.032-2.032a2.875 2.875 0 0 0-4.066 0L35.34 55.466a2.875 2.875 0 0 0 0 4.066l10.483 10.483a2.877 2.877 0 0 0 4.068 0zm13.185-2.03l2.033 2.032a2.875 2.875 0 0 0 4.066 0L79.66 59.534a2.875 2.875 0 0 0 0-4.066L69.176 44.985a2.875 2.875 0 0 0-4.066 0l-2.032 2.032a2.875 2.875 0 0 0 0 4.066l6.416 6.417-6.416 6.418a2.875 2.875 0 0 0 0 4.067z" />
+            </svg>
+          </div>
+          <span>
+            <a href="https://MarkAndrewMarquez.com/techs/ubuntu/">Ubuntu</a> -
+            <a href="https://MarkAndrewMarquez.com/techs/openclaw/">OpenClaw</a> -
+            <a href="https://MarkAndrewMarquez.com/techs/ollama/">Ollama</a> -
+            <a href="https://MarkAndrewMarquez.com/techs/gemma/">Gemma</a>
+            <a href="https://MarkAndrewMarquez.com/techs/microsoft-teams/">Microsoft Teams</a> -
+            <a href="https://MarkAndrewMarquez.com/techs/azure/">Azure</a> -
+            <a href="https://MarkAndrewMarquez.com/techs/ai/">AI</a> -
+            <a href="https://MarkAndrewMarquez.com/techs/automation/">Automation</a> -
+            <a href="https://MarkAndrewMarquez.com/techs/llm/">LLM</a>
+            <a href="https://MarkAndrewMarquez.com/techs/tailscale/">Tailscale</a>
+          </span>
+        </div>
+        <div class="portfolio-tags">
+          <div class="icon">
+            <svg width="18px" height="18px" viewBox="0 0 115 115" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+              <path d="M70.577 44.423c11.476 11.476 12.214 29.713 2.19 42.038-1.402 1.736-.625.868-19.078 19.321-12.285 12.285-32.18 12.296-44.47 0-12.29-12.284-12.294-32.176 0-44.47 7.36-7.362 11.642-11.657 14.242-14.253 1.676-1.674 4.566-.53 4.601 1.84.042 2.862.4 5.712 1.066 8.496a2.68 2.68 0 0 1-.72 2.515L18.112 70.206c-7.357 7.362-7.387 19.292 0 26.684 7.361 7.357 19.292 7.386 26.683 0L61.683 80c7.348-7.351 7.362-19.32 0-26.682a18.805 18.805 0 0 0-5.125-3.645c-1.038-.502-1.613-1.629-1.473-2.773a11.616 11.616 0 0 1 3.327-6.83l.983-.982a2.68 2.68 0 0 1 3.09-.516 31.268 31.268 0 0 1 8.092 5.851zm35.205-35.205c-12.292-12.296-32.186-12.285-44.47 0-18.454 18.453-17.677 17.585-19.08 19.32-10.023 12.326-9.285 30.563 2.19 42.039a31.268 31.268 0 0 0 8.092 5.85 2.68 2.68 0 0 0 3.091-.515l.983-.982a11.614 11.614 0 0 0 3.327-6.83c.14-1.144-.435-2.271-1.473-2.773a18.801 18.801 0 0 1-5.125-3.645c-7.362-7.362-7.348-19.33 0-26.681l16.889-16.89c7.391-7.387 19.322-7.358 26.683 0 7.387 7.39 7.357 19.321 0 26.683L86.591 55.09a2.68 2.68 0 0 0-.719 2.515 38.927 38.927 0 0 1 1.066 8.497c.035 2.368 2.925 3.513 4.602 1.84 2.6-2.596 6.88-6.892 14.242-14.253 12.293-12.294 12.288-32.187 0-44.471z"/>
+            </svg>
+          </div>
+          <a target="_blank" href="https://github.com/marky224/Personal_Website">https://github.com/marky224/Personal_Website</a>
+        </div>
+        <div class="portfolio-tags">
+          <div class="icon">
+            <svg width="18px" height="18px" viewBox="0 0 115 115" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+              <path d="M77.577 51.23a1.807 1.807 0 0 0-2.2.342l-27.562 27.79a1.807 1.807 0 0 1-2.2.342l-14.008-9.702a1.807 1.807 0 0 0-2.2.342l-1.952 1.968c-.287.22-.456.568-.455.936.001.37.172.716.46.934L45.637 86.77a1.807 1.807 0 0 0 2.2-.342l31.709-31.97c.287-.22.456-.567.455-.936a1.175 1.175 0 0 0-.46-.933l-1.963-1.36z"/><path d="M97.304 20H80.512c-.041.34-.063.683-.064 1.026a5.986 5.986 0 0 0 1.256 4.1c.054.003.103.20.157.025a4.881 4.881 0 0 1 1.865-.025c3.05.562 4.984 3.907 4.32 7.47-.666 3.563-3.678 5.996-6.728 5.433a4.932 4.932 0 0 1-2.437-1.258c-6.018-1.378-10.445-7.795-10.445-15.745 0-.347.023-.685.04-1.026H34.579c-.041.34-.063.683-.064 1.026a5.986 5.986 0 0 0 1.256 4.1c.054.003.103.02.157.025a4.881 4.881 0 0 1 1.865-.025c3.05.562 4.984 3.907 4.32 7.47-.666 3.563-3.678 5.996-6.728 5.433a4.932 4.932 0 0 1-2.437-1.258c-6.018-1.378-10.445-7.795-10.445-15.745 0-.22.019-.434.025-.652a9.788 9.788 0 0 0-5.697 4.471 9.683 9.683 0 0 0-2.65 4.764L1.158 92.871c-.965 4.689 2.6 8.503 7.948 8.503h6.334v2.673c-.077 5.41 4.263 9.861 9.705 9.953h72.16c5.438-.095 9.774-4.546 9.694-9.953V29.953c.08-5.407-4.256-9.858-9.695-9.953zM10.078 96.653c-2.378 0-3.964-1.697-3.535-3.782L16.637 43.84h80.787L87.331 92.871a5.254 5.254 0 0 1-5.091 3.782H10.078zm91.535 7.394c.036 2.403-1.891 4.382-4.308 4.424h-72.16c-2.42-.04-4.352-2.018-4.32-4.424v-2.673h60.443c5.348 0 10.484-3.814 11.449-8.503l8.897-43.215v54.391z"/><path d="M34.814 33c1.243 0 2.251-1.057 2.251-2.36 0-1.305-1.008-2.362-2.25-2.362-2.04 0-4.313-3.194-4.313-7.778s2.272-7.778 4.312-7.778c1.227 0 2.536 1.163 3.386 3.084H43C41.716 11.19 38.578 8 34.814 8 29.871 8 26 13.49 26 20.5c0 7.009 3.871 12.5 8.814 12.5z"/>
+            </svg>
+          </div>
+          <span>2026</span>
+        </div>
+      </div>
+
+      <p><img src="images/teams-openclaw-chat.jpg" alt="OpenClaw AI responding in Microsoft Teams"></p>
+
+      <h1 id="building-a-dedicated-ai-assistant-pc-with-openclaw-ollama-and-microsoft-teams">Building a Dedicated AI Assistant PC with OpenClaw, Ollama, and Microsoft Teams</h1>
+      <p>Running AI models in the cloud is convenient, but it comes with recurring API costs, data privacy concerns, and dependency on third-party services. I wanted an AI assistant that runs entirely on my own hardware—zero cloud LLM costs, full data ownership, and accessible from anywhere through Microsoft Teams. This project documents how I repurposed a spare PC into a dedicated, headless AI assistant server running OpenClaw with Google's Gemma 4 31B model locally on an NVIDIA RTX 4080.</p>
+
+      <h2 id="the-challenge">The Challenge: A Self-Hosted AI Assistant with Zero Cloud Costs</h2>
+      <p>Most AI assistants rely on cloud APIs (OpenAI, Anthropic, Google) which charge per token. For someone who wants to interact with an AI assistant throughout the workday—asking questions, automating tasks, and processing information—those costs add up quickly. I wanted a solution that was completely self-contained: the LLM runs locally on my GPU, the agent framework runs on the same machine, and I can interact with it from my primary PC or phone through Microsoft Teams without exposing anything unnecessary to the internet.</p>
+      <p>The additional constraints were practical: the PC needed to run 24/7 headlessly (no monitor or keyboard), survive SSH disconnects and reboots without manual intervention, and be manageable entirely through remote access.</p>
+
+      <h2 id="hardware-and-software-stack">Hardware and Software Stack</h2>
+      <p>The dedicated AI assistant PC was built using hardware I already had available:</p>
+      <ul>
+        <li><strong>GPU</strong>: NVIDIA GeForce RTX 4080 (16 GB VRAM) — handles LLM inference with GPU acceleration</li>
+        <li><strong>RAM</strong>: 64 GB DDR4 — provides headroom for model overflow and system operations</li>
+        <li><strong>Storage</strong>: 2 TB SSD (previously running Red Hat, wiped and reformatted during Ubuntu install)</li>
+        <li><strong>OS</strong>: Ubuntu 24.04 LTS Server (headless, SSH-only access)</li>
+        <li><strong>LLM Server</strong>: Ollama — serves Google Gemma 4 31B locally with automatic GPU detection</li>
+        <li><strong>Agent Framework</strong>: OpenClaw — open-source AI agent platform with Microsoft Teams integration</li>
+        <li><strong>Tunnel</strong>: Tailscale Funnel — exposes a single webhook port for the Azure Bot Framework</li>
+        <li><strong>Bot Framework</strong>: Azure Bot — bridges Microsoft Teams to the OpenClaw gateway</li>
+        <li><strong>Motherboard</strong>: MSI MEG X570 Unify — configured in UEFI mode with Secure Boot disabled for Linux compatibility</li>
+      </ul>
+
+      <h2 id="gpu-verification">GPU Acceleration Verification</h2>
+      <p>Below is a screenshot verifying the RTX 4080 running Gemma 4 31B locally with full GPU acceleration:</p>
+      <p><img src="images/nvidia-smi-gemma4.jpg" alt="nvidia-smi showing Gemma 4 31B loaded on RTX 4080"></p>
+
+      <h2 id="architecture-overview">Architecture Overview</h2>
+      <p>The system architecture is straightforward but involves several components working together:</p>
+      <pre><code>Microsoft Teams (PC/Phone)
+    ↓ HTTPS
+Azure Bot Framework
+    ↓ Webhook
+Tailscale Funnel (public HTTPS → Tailscale port)
+    ↓
+OpenClaw Gateway (Teams plugin, Tailscale port)
+    ↓
+OpenClaw Agent Engine
+    ↓ HTTP (localhost:XXXXX)
+Ollama (Gemma 4 31B on RTX 4080)</code></pre>
+
+      <h2 id="phase-a-core-setup-ssh-only-isolated">Phase A: Core Setup (SSH-Only, Isolated)</h2>
+      <p>The build followed a two-phase approach. Phase A focused on getting a fully working agent accessible via SSH with zero internet exposure—no Azure, no tunnel, no webhook.</p>
+
+      <h3 id="operating-system-installation">Operating System Installation</h3>
+      <p>The 2 TB SSD previously ran Red Hat. Rather than manually wiping the drive, the Ubuntu 24.04 LTS Server installer's "Use entire disk" option handled the reformatting and repartitioning automatically.</p>
+
+      <h3 id="openclaw-tui-verification">OpenClaw TUI Verification</h3>
+      <p>Below is a screenshot of the OpenClaw TUI running directly via SSH, demonstrating local agent capabilities on Gemma 4 31B (RTX 4080):</p>
+      <p><img src="images/openclaw-tui-ssh.jpg" alt="OpenClaw TUI running via SSH"></p>
+
+      <h2 id="phase-b-microsoft-teams-integration">Phase B: Microsoft Teams Integration</h2>
+      <p>Phase B added internet-facing components to enable Teams access while keeping the rest of the system isolated.</p>
+
+      <h3 id="tailscale-funnel">Tailscale Funnel</h3>
+      <p>Tailscale was installed and authenticated, then Funnel was enabled on its port—the only port exposed to the internet.</p>
+      <p>Below is a screenshot of the Tailscale Funnel status showing the public webhook URL used by the Azure Bot Framework:</p>
+      <p><img src="images/tailscale-funnel-status.jpg" alt="Tailscale Funnel status showing public URL"></p>
+
+      <h3 id="azure-bot-registration">Azure Bot Registration</h3>
+      <p>The Azure Bot was configured with an Entra ID app registration (single tenant), an Azure Bot resource, and the messaging endpoint pointed to the Tailscale Funnel URL plus <code>/api/messages</code>.</p>
+
+      <h2 id="results">Results</h2>
+      <p>The final system delivers a fully self-hosted AI assistant with the following characteristics:</p>
+      <ul>
+        <li><strong>Zero recurring cloud LLM costs</strong> — all inference runs locally on the RTX 4080</li>
+        <li><strong>Accessible from Microsoft Teams</strong> on PC and mobile — no special client software needed</li>
+        <li><strong>24/7 operation</strong> — systemd services for OpenClaw, Ollama, and Tailscale Funnel all survive reboots</li>
+        <li><strong>Minimal internet exposure</strong> — only one port exposed via Tailscale Funnel, no router changes</li>
+        <li><strong>Full data ownership</strong> — all conversations and model weights stay on the local machine</li>
+        <li><strong>Responsive performance</strong> — Gemma 4 31B with GPU acceleration provides practical response times for daily use</li>
+      </ul>
+      <p>The system has been running stably since deployment, responding to Teams messages from both desktop and mobile clients.</p>
+
+      <h2 id="systemd-verification">Systemd Services Verification</h2>
+      <p>Below is a screenshot verifying the OpenClaw gateway and Ollama services running reliably after reboot (headless operation):</p>
+      <p><img src="images/systemctl-openclaw-ollama.jpg" alt="systemctl status showing OpenClaw and Ollama services"></p>
+
+      <h2 id="mobile-teams-verification">Mobile Teams Access Verification</h2>
+      <p>Below is a screenshot of the OpenClaw AI assistant responding in Microsoft Teams on a mobile device, proving seamless access from anywhere (phone or tablet):</p>
+      <p><img src="images/openclaw-teams-mobile.jpg" alt="OpenClaw AI responding in Microsoft Teams on mobile"></p>
+
+      <h2 id="usage">Usage</h2>
+      <p>To interact with the assistant:</p>
+      <ul>
+        <li><strong>From Microsoft Teams</strong>: Open a DM with the "OpenClaw AI" bot and send a message</li>
+        <li><strong>From SSH</strong>: Connect to the machine and run <code>openclaw tui</code> for a terminal chat interface</li>
+      </ul>
+
+      <h2 id="conclusion">Conclusion</h2>
+      <p>This project demonstrates that a practical, daily-use AI assistant can run entirely on consumer hardware with no ongoing cloud costs. The combination of OpenClaw's agent framework, Ollama's local LLM serving, and Azure Bot Framework's Teams integration creates a system that's both powerful and self-contained. The two-phase build approach—getting everything working via SSH first, then adding Teams—made troubleshooting significantly easier by isolating network and authentication issues from core functionality problems.</p>
+      <p>For MSP professionals and IT specialists looking to experiment with local AI, the barrier to entry is lower than expected: a spare PC with a capable GPU, an Azure Bot registration, and a Tailscale account are all that's needed to get started.</p>
+
+      <h1 id="marks-project-portfolio"><a href="https://markandrewmarquez.com/portfolio/">Mark’s Project Portfolio</a></h1>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-wrapper">
+      <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="external">Hugo</a> and the <a href="https://github.com/bjacquemet/personal-web" target='_blank' rel="external">Personal Web</a> theme.</p>
+      <p>© Mark Marquez</p>
+    </div>
+  </footer>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:500,600|Raleway:400,400i,600" rel="stylesheet">
+</body>
+</html>
