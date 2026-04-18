@@ -1,0 +1,280 @@
+```html
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <title>Building M365 Guardian: An LLM-Powered Microsoft 365 Administration Chatbot</title>
+  <link rel='canonical' href='https://MarkAndrewMarquez.com/portfolio/m365-guardian/' />
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1' />
+  <meta name='description' content='An LLM-powered Microsoft 365 administration chatbot built with Python, LiteLLM, Microsoft Graph API, and Azure App Service. Features natural language user management, mandatory confirmation gates, full audit logging, and automated weekly security reports delivered to Teams.' />
+  <meta name='theme-color' content='#FD3519' />
+
+  <link rel="shortcut icon" href="images/Lightning%20bolt.ico" type="image/x-icon" />
+  <link rel="icon" href="images/Lightning%20bolt.ico" type="image/x-icon" />
+
+  <meta name="generator" content="Hugo 0.72.0" />
+
+  <link rel="stylesheet" href="https://MarkAndrewMarquez.com/sass/style.min.8a1658d134a4b54730b66789206b2cf14c1b006a6de3f3fde6302f925b6e01f5.css" integrity="sha256-ihZY0TSktUcwtmeJIGss8UwbAGpt4/P95jAvkltuAfU=" media="screen">
+  <link rel="stylesheet" href="https://MarkAndrewMarquez.com/syntax.min.css" integrity="" media="screen">
+
+  <meta property="og:title" content="Building M365 Guardian: An LLM-Powered Microsoft 365 Administration Chatbot" />
+  <meta property="og:description" content="An LLM-powered Microsoft 365 administration chatbot built with Python, LiteLLM, Microsoft Graph API, and Azure App Service. Features natural language user management, mandatory confirmation gates, full audit logging, and automated weekly security reports delivered to Teams." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://MarkAndrewMarquez.com/portfolio/m365-guardian/" />
+
+  <meta itemprop="name" content="Building M365 Guardian: An LLM-Powered Microsoft 365 Administration Chatbot">
+  <meta itemprop="description" content="An LLM-powered Microsoft 365 administration chatbot built with Python, LiteLLM, Microsoft Graph API, and Azure App Service. Features natural language user management, mandatory confirmation gates, full audit logging, and automated weekly security reports delivered to Teams.">
+  <meta itemprop="wordCount" content="2450">
+
+  <meta itemprop="keywords" content="Python, Azure, LLM, Microsoft 365, Entra ID, Microsoft Graph API, Teams Bot, LiteLLM, Azure App Service, PowerShell, Cybersecurity, Automation" />
+</head>
+<body>
+  <header style="background-image:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('https://MarkAndrewMarquez.com/images/big-data-background.jpg')">
+    <div class="intro">
+      <div class="logo-container">
+        <a href="/">
+          <img src='https://MarkAndrewMarquez.com/images/Headshot%20-%20cropped.png' alt="Profile PORTFOLIO" class="rounded-logo">
+        </a>
+      </div>
+      <h2>Mark Marquez</h2>
+      <h3>IT & Automation Specialist | Cybersecurity | Data-Engineering | AI Enthusiast</h3>
+      <div class="menu">
+        <p><a href="https://github.com/marky224">GitHub</a></p>
+        <p><a href="/portfolio/">Project Portfolio</a></p>
+      </div>
+    </div>
+    <div class="socials">
+      <a href="https://github.com/marky224/m365-guardian" class="social-link" target="_blank" rel="noopener">
+        <div class="icon">
+          <svg width="35px" height="35px" viewBox="0 0 115 115" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+            <path d="M102.679 0H12.32C5.52 0 0 5.519 0 12.321v90.358C0 109.48 5.519 115 12.321 115h90.358c6.802 0 12.321-5.519 12.321-12.321V12.32C115 5.52 109.481 0 102.679 0zM71.182 98.494c-2.156.385-2.952-.95-2.952-2.053 0-1.386.051-8.471.051-14.195 0-4.005-1.335-6.546-2.9-7.881C74.878 73.313 84.89 72.003 84.89 55.6c0-4.671-1.669-7.007-4.39-10.01.436-1.105 1.9-5.648-.436-11.552-3.568-1.104-11.731 4.595-11.731 4.595-3.389-.95-7.06-1.438-10.679-1.438-3.62 0-7.29.488-10.679 1.438 0 0-8.163-5.699-11.73-4.595-2.337 5.878-.899 10.422-.437 11.551-2.72 3.004-4.004 5.34-4.004 10.011 0 16.326 9.574 17.712 19.072 18.765-1.232 1.104-2.336 3.003-2.72 5.724-2.44 1.104-8.677 3.004-12.4-3.568-2.335-4.056-6.545-4.39-6.545-4.39-4.159-.05-.282 2.619-.282 2.619 2.772 1.283 4.723 6.212 4.723 6.212 2.49 7.624 14.4 5.057 14.4 5.057 0 3.568.052 9.37.052 10.422 0 1.104-.77 2.438-2.952 2.053C27.21 92.821 15.35 76.701 15.35 57.86c0-23.564 18.02-41.456 41.585-41.456s42.663 17.892 42.663 41.456c.026 18.842-11.474 34.988-28.416 40.635zM46 82.81c-.488.103-.95-.102-1.001-.436-.051-.385.282-.719.77-.822.488-.05.95.154 1.001.488.077.334-.257.668-.77.77zm-2.439-.23c0 .333-.385.615-.898.615-.565.052-.95-.23-.95-.616 0-.333.385-.616.899-.616.487-.051.95.231.95.616zm-3.516-.283c-.103.334-.616.488-1.053.334-.488-.103-.821-.488-.719-.822.103-.334.617-.488 1.053-.385.513.154.847.54.719.873zm-3.158-1.386c-.23.282-.718.23-1.104-.154-.385-.334-.487-.822-.23-1.053.23-.282.718-.23 1.103.154.334.334.462.847.231 1.053zm-2.336-2.336c-.23.154-.667 0-.95-.385-.282-.385-.282-.822 0-1.001.283-.231.72-.052.95.333.283.385.283.847 0 1.053zm-1.668-2.49c-.231.23-.616.103-.899-.154-.282-.334-.333-.719-.102-.899.23-.23.616-.102.898.154.282.334.334.72.103.899zm-1.72-1.9c-.103.231-.436.283-.719.103-.334-.154-.488-.436-.385-.667.103-.154.385-.231.719-.103.334.18.488.462.385.667z"/>
+          </svg>
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/in/markandrewmarquez/" class="social-link" target="_blank" rel="noopener">
+        <div class="icon">
+          <svg width="35px" height="35px" viewBox="0 0 115 115" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+            <path d="M106.786 0H8.189C3.67 0 0 3.722 0 8.291v98.418C0 111.278 3.67 115 8.189 115h98.597c4.518 0 8.214-3.722 8.214-8.291V8.29C115 3.722 111.304 0 106.786 0zm-72.03 98.571H17.713V43.69h17.07V98.57h-.025zm-8.522-62.377c-5.467 0-9.882-4.44-9.882-9.883 0-5.442 4.415-9.882 9.882-9.882 5.442 0 9.883 4.44 9.883 9.882a9.87 9.87 0 0 1-9.883 9.883zm72.414 62.377H81.604V71.875c0-6.366-.129-14.555-8.856-14.555-8.882 0-10.242 6.931-10.242 14.093V98.57H45.46V43.69h16.352v7.495h.23c2.285-4.312 7.855-8.856 16.147-8.856 17.25 0 20.458 11.372 20.458 26.158V98.57z"/>
+          </svg>
+        </div>
+      </a>
+    </div>
+  </header>
+
+  <div class="content-wrapper">
+    <div class="breadcrumb">
+      <span><a href="https://MarkAndrewMarquez.com/"></a> / </span>
+      <span><a href="https://MarkAndrewMarquez.com/portfolio/">PORTFOLIO</a> / </span>
+      <span class="active"><a href="https://MarkAndrewMarquez.com/portfolio/m365-guardian/">Building M365 Guardian: An LLM-Powered Microsoft 365 Administration Chatbot</a></span>
+    </div>
+
+    <main id="content" class="portfolio">
+      <h1>Building M365 Guardian: An LLM-Powered Microsoft 365 Administration Chatbot</h1>
+      <div class="tags">
+        <div class="techs portfolio-tags">
+          <div class="icon">
+            <svg width="18px" height="18px" viewBox="0 0 115 115" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+              <path d="M112.125 86.25H103.5V34.5c0-6.325-5.175-11.5-11.5-11.5H23c-6.325 0-11.5 5.175-11.5 11.5v51.75H2.875A2.883 2.883 0 0 0 0 89.125v8.625C0 107.237 7.763 115 17.25 115h80.5c9.487 0 17.25-7.763 17.25-17.25v-8.625a2.883 2.883 0 0 0-2.875-2.875zm-92-51.75c0-1.558 1.317-2.875 2.875-2.875h69c1.558 0 2.875 1.317 2.875 2.875v51.75h-74.75V34.5zm86.25 63.25c0 4.756-3.869 8.625-8.625 8.625h-80.5c-4.756 0-8.625-3.869-8.625-8.625v-2.875H41.13c1.001 1.687 2.764 2.875 4.87 2.875h23c2.106 0 3.867-1.188 4.87-2.875h32.505v2.875zM49.892 70.015l2.032-2.032a2.875 2.875 0 0 0 0-4.066L45.506 57.5l6.416-6.418a2.875 2.875 0 0 0 0-4.067l-2.032-2.032a2.875 2.875 0 0 0-4.066 0L35.34 55.466a2.875 2.875 0 0 0 0 4.066l10.483 10.483a2.877 2.877 0 0 0 4.068 0zm13.185-2.03l2.033 2.032a2.875 2.875 0 0 0 4.066 0L79.66 59.534a2.875 2.875 0 0 0 0-4.066L69.176 44.985a2.875 2.875 0 0 0-4.066 0l-2.032 2.032a2.875 2.875 0 0 0 0 4.066l6.416 6.417-6.416 6.418a2.875 2.875 0 0 0 0 4.067z" />
+            </svg>
+          </div>
+          <span>
+            <a href="https://MarkAndrewMarquez.com/techs/python/">Python</a> -
+            <a href="https://MarkAndrewMarquez.com/techs/azure/">Azure</a> -
+            <a href="https://MarkAndrewMarquez.com/techs/llm/">LLM</a> -
+            <a href="https://MarkAndrewMarquez.com/techs/microsoft-365/">Microsoft 365</a> -
+            <a href="https://MarkAndrewMarquez.com/techs/entra-id/">Entra ID</a> -
+            <a href="https://MarkAndrewMarquez.com/techs/microsoft-teams/">Microsoft Teams</a> -
+            <a href="https://MarkAndrewMarquez.com/techs/graph-api/">Graph API</a> -
+            <a href="https://MarkAndrewMarquez.com/techs/automation/">Automation</a> -
+            <a href="https://MarkAndrewMarquez.com/techs/cybersecurity/">Cybersecurity</a>
+          </span>
+        </div>
+        <div class="portfolio-tags">
+          <div class="icon">
+            <svg width="18px" height="18px" viewBox="0 0 115 115" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+              <path d="M70.577 44.423c11.476 11.476 12.214 29.713 2.19 42.038-1.402 1.736-.625.868-19.078 19.321-12.285 12.285-32.18 12.296-44.47 0-12.29-12.284-12.294-32.176 0-44.47 7.36-7.362 11.642-11.657 14.242-14.253 1.676-1.674 4.566-.53 4.601 1.84.042 2.862.4 5.712 1.066 8.496a2.68 2.68 0 0 1-.72 2.515L18.112 70.206c-7.357 7.362-7.387 19.292 0 26.684 7.361 7.357 19.292 7.386 26.683 0L61.683 80c7.348-7.351 7.362-19.32 0-26.682a18.805 18.805 0 0 0-5.125-3.645c-1.038-.502-1.613-1.629-1.473-2.773a11.616 11.616 0 0 1 3.327-6.83l.983-.982a2.68 2.68 0 0 1 3.09-.516 31.268 31.268 0 0 1 8.092 5.851zm35.205-35.205c-12.292-12.296-32.186-12.285-44.47 0-18.454 18.453-17.677 17.585-19.08 19.32-10.023 12.326-9.285 30.563 2.19 42.039a31.268 31.268 0 0 0 8.092 5.85 2.68 2.68 0 0 0 3.091-.515l.983-.982a11.614 11.614 0 0 0 3.327-6.83c.14-1.144-.435-2.271-1.473-2.773a18.801 18.801 0 0 1-5.125-3.645c-7.362-7.362-7.348-19.33 0-26.681l16.889-16.89c7.391-7.387 19.322-7.358 26.683 0 7.387 7.39 7.357 19.321 0 26.683L86.591 55.09a2.68 2.68 0 0 0-.719 2.515 38.927 38.927 0 0 1 1.066 8.497c.035 2.368 2.925 3.513 4.602 1.84 2.6-2.596 6.88-6.892 14.242-14.253 12.293-12.294 12.288-32.187 0-44.471z"/>
+            </svg>
+          </div>
+          <a target="_blank" href="https://github.com/marky224/m365-guardian">https://github.com/marky224/m365-guardian</a>
+        </div>
+        <div class="portfolio-tags">
+          <div class="icon">
+            <svg width="18px" height="18px" viewBox="0 0 115 115" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+              <path d="M77.577 51.23a1.807 1.807 0 0 0-2.2.342l-27.562 27.79a1.807 1.807 0 0 1-2.2.342l-14.008-9.702a1.807 1.807 0 0 0-2.2.342l-1.952 1.968c-.287.22-.456.568-.455.936.001.37.172.716.46.934L45.637 86.77a1.807 1.807 0 0 0 2.2-.342l31.709-31.97c.287-.22.456-.567.455-.936a1.175 1.175 0 0 0-.46-.933l-1.963-1.36z"/><path d="M97.304 20H80.512c-.041.34-.063.683-.064 1.026a5.986 5.986 0 0 0 1.256 4.1c.054.003.103.20.157.025a4.881 4.881 0 0 1 1.865-.025c3.05.562 4.984 3.907 4.32 7.47-.666 3.563-3.678 5.996-6.728 5.433a4.932 4.932 0 0 1-2.437-1.258c-6.018-1.378-10.445-7.795-10.445-15.745 0-.347.023-.685.04-1.026H34.579c-.041.34-.063.683-.064 1.026a5.986 5.986 0 0 0 1.256 4.1c.054.003.103.02.157.025a4.881 4.881 0 0 1 1.865-.025c3.05.562 4.984 3.907 4.32 7.47-.666 3.563-3.678 5.996-6.728 5.433a4.932 4.932 0 0 1-2.437-1.258c-6.018-1.378-10.445-7.795-10.445-15.745 0-.22.019-.434.025-.652a9.788 9.788 0 0 0-5.697 4.471 9.683 9.683 0 0 0-2.65 4.764L1.158 92.871c-.965 4.689 2.6 8.503 7.948 8.503h6.334v2.673c-.077 5.41 4.263 9.861 9.705 9.953h72.16c5.438-.095 9.774-4.546 9.694-9.953V29.953c.08-5.407-4.256-9.858-9.695-9.953zM10.078 96.653c-2.378 0-3.964-1.697-3.535-3.782L16.637 43.84h80.787L87.331 92.871a5.254 5.254 0 0 1-5.091 3.782H10.078zm91.535 7.394c.036 2.403-1.891 4.382-4.308 4.424h-72.16c-2.42-.04-4.352-2.018-4.32-4.424v-2.673h60.443c5.348 0 10.484-3.814 11.449-8.503l8.897-43.215v54.391z"/><path d="M34.814 33c1.243 0 2.251-1.057 2.251-2.36 0-1.305-1.008-2.362-2.25-2.362-2.04 0-4.313-3.194-4.313-7.778s2.272-7.778 4.312-7.778c1.227 0 2.536 1.163 3.386 3.084H43C41.716 11.19 38.578 8 34.814 8 29.871 8 26 13.49 26 20.5c0 7.009 3.871 12.5 8.814 12.5z"/>
+            </svg>
+          </div>
+          <span>2026</span>
+        </div>
+      </div>
+
+      <p><img src="images/architecture-diagram.png" alt="M365 Guardian Architecture Diagram"></p>
+
+      <h1 id="building-m365-guardian-an-llm-powered-microsoft-365-administration-chatbot">Building M365 Guardian: An LLM-Powered Microsoft 365 Administration Chatbot</h1>
+      <p>Running Microsoft 365 administration through the Entra ID portal or PowerShell works, but it’s slow, error-prone, and requires specialized knowledge that not every IT technician has. I wanted a solution where a technician could type “Create a new user named Sarah Chen in Engineering with a Business Basic license” and have it just work—with full audit logging, mandatory confirmation before any changes, and automated weekly security reports delivered to Teams and email. This project documents how I built and deployed M365 Guardian, an LLM-powered chatbot that manages Entra ID users and Exchange Online mailboxes through natural language.</p>
+
+      <h2 id="the-challenge-simplifying-m365-administration-for-smb-it-teams">The Challenge: Simplifying M365 Administration for SMB IT Teams</h2>
+      <p>Small and mid-sized businesses rarely have dedicated Microsoft 365 administrators. The technicians managing user accounts, password resets, MFA enforcement, and license assignments are often the same people handling helpdesk tickets, network issues, and everything else. They need to switch between the Entra ID portal, Exchange admin center, and PowerShell—each with its own interface, terminology, and quirks.</p>
+      <p>The goal was to build a single conversational interface that handles all common M365 user management tasks while enforcing security best practices automatically. Every write action requires explicit human confirmation. Every action is logged for compliance. And a weekly security report runs all 10 checks without anyone having to remember to do it.</p>
+
+      <h2 id="architecture-overview">Architecture Overview</h2>
+      <pre><code>Microsoft Teams / Web Chat
+        ↓
+    Bot Framework / REST API
+        ↓
+    LLM Orchestration (LiteLLM)
+    Tool Calling + Structured Output
+        ↓
+    Tool Executor
+    Routes tool calls → Graph API
+    Audit logging on every operation
+        ↓
+    Microsoft Graph API
+    Entra ID · Exchange Online · Identity Protection</code></pre>
+      <p>The LLM layer is provider-agnostic through LiteLLM—the deployment uses xAI’s Grok, but swapping to Anthropic Claude, OpenAI, or Azure OpenAI requires only changing two environment variables with no code changes.</p>
+
+      <h2 id="technology-stack">Technology Stack</h2>
+      <ul>
+        <li><strong>Backend</strong>: Python 3.11 on Azure App Service (Linux, B1 tier)</li>
+        <li><strong>LLM Orchestration</strong>: LiteLLM with xAI Grok (grok-4-1-fast-reasoning)</li>
+        <li><strong>Microsoft Graph SDK</strong>: msgraph-sdk for Entra ID and Exchange Online operations</li>
+        <li><strong>Bot Framework</strong>: botbuilder-core for Microsoft Teams integration</li>
+        <li><strong>Web Framework</strong>: aiohttp for the async REST API and web chat</li>
+        <li><strong>Audit Storage</strong>: Azure Cosmos DB (session history and action audit logs)</li>
+        <li><strong>Scheduled Reports</strong>: Azure Functions timer trigger (weekly Monday 8 AM UTC)</li>
+        <li><strong>Authentication</strong>: Entra ID app registration with least-privilege Graph API permissions (SingleTenant)</li>
+        <li><strong>Security</strong>: IP-restricted App Service with Azure Bot Service tag allowlist</li>
+      </ul>
+
+      <h2 id="tool-inventory-18-functions">Tool Inventory: 18 Functions</h2>
+      <p>M365 Guardian exposes 18 tools to the LLM through function calling. Each tool maps to one or more Microsoft Graph API operations, and every call is logged to Cosmos DB with the requesting technician’s identity.</p>
+      <p>Read operations include searching users, getting detailed user profiles (with MFA status, sign-in activity, group memberships), listing available licenses, checking mailbox provisioning status, querying audit logs, and generating the weekly security report.</p>
+      <p>Write operations—all requiring explicit “Type YES to proceed” confirmation—include creating users, updating properties, deleting accounts, resetting passwords, enforcing MFA, assigning and removing licenses, managing group memberships, managing shared mailboxes and distribution groups, bulk operations on up to 50 users, and sending reports to Teams channels or email.</p>
+
+      <h2 id="the-confirmation-flow-security-by-design">The Confirmation Flow: Security by Design</h2>
+      <p>The core safety mechanism is the mandatory confirmation loop. When a technician requests any write action, the bot presents a structured summary showing exactly what will change, lists security implications, and asks for explicit “YES” confirmation before executing. This is enforced at the LLM system prompt level and at the tool executor level—write tools are classified in a <code>WRITE_TOOLS</code> set and treated differently from read operations.</p>
+      <pre><code>┌─────────────────────────────────────────┐
+│  M365 GUARDIAN — ACTION SUMMARY         │
+├─────────────────────────────────────────┤
+│  Action:    Create new user + mailbox   │
+│  Target:    sarah.chen@contoso.com      │
+│  Changes:                               │
+│   • Display name: Sarah Chen            │
+│   • Department: Engineering             │
+│   • License: Microsoft 365 Business     │
+│   • Temporary password: ********        │
+│   • Force password change: Yes          │
+│  Warnings:                              │
+│   • Mailbox may take 15 min to          │
+│     provision after license assignment  │
+│  Audit ID:  a1b2c3d4-e5f6-7890-...     │
+└─────────────────────────────────────────┘
+⚠️  Type YES to proceed, or anything else to cancel.</code></pre>
+      <p>Only after receiving “YES” does the bot execute the Graph API calls. Anything else cancels the operation.</p>
+
+      <p><img src="images/user-creation-confirmation.jpg" alt="User Creation Confirmation Flow"></p>
+
+      <h2 id="weekly-security-insights-report-10-automated-checks">Weekly Security Insights Report: 10 Automated Checks</h2>
+      <p>The report service runs 10 security and best-practice checks against the tenant, each with configurable severity thresholds:</p>
+      <ol>
+        <li><strong>Suspicious Sign-Ins</strong> — queries Identity Protection for risky sign-in events (requires Azure AD P2)</li>
+        <li><strong>MFA Compliance Gaps</strong> — identifies users without any registered MFA method</li>
+        <li><strong>Dormant/Inactive Accounts</strong> — finds accounts with no sign-in for 90+ days</li>
+        <li><strong>License Optimization</strong> — flags SKUs with significant unused capacity</li>
+        <li><strong>Privileged Access Hygiene</strong> — counts permanent Global Admin and privileged role holders</li>
+        <li><strong>Guest User &amp; External Access</strong> — reviews guest accounts for stale or unnecessary access</li>
+        <li><strong>Legacy Authentication Usage</strong> — checks for sign-ins using legacy protocols</li>
+        <li><strong>Exchange Online Best Practices</strong> — reviews auto-forwarding rules, excessive delegations, storage quotas</li>
+        <li><strong>Conditional Access &amp; Risk Policy Gaps</strong> — identifies missing or disabled policies</li>
+        <li><strong>Password &amp; Authentication Hygiene</strong> — checks SSPR status, banned password lists, weak methods</li>
+      </ol>
+      <p>Each check returns a severity (Critical, Warning, or OK), a finding count, the top 5 affected items, and a “Fix with M365 Guardian” action link that opens the chatbot with a pre-filled remediation command. The report is delivered as an Adaptive Card in Teams and an HTML email.</p>
+
+      <p><img src="images/weekly-security-report.jpg" alt="Weekly Security Report Output"></p>
+
+      <h2 id="azure-deployment">Azure Deployment</h2>
+      <p>The entire infrastructure runs in a single Azure resource group with the following resources:</p>
+      <ul>
+        <li><strong>App Service</strong> (B1 Linux) — hosts the bot endpoint and web chat on Python 3.11</li>
+        <li><strong>App Service Plan</strong> — shared between the web app and Function App</li>
+        <li><strong>Cosmos DB</strong> — two containers: <code>sessions</code> for conversation state, <code>audit_logs</code> for action history (1-year TTL)</li>
+        <li><strong>Azure Bot Service</strong> — SingleTenant registration bridging Teams to the App Service</li>
+        <li><strong>Azure Function App</strong> — timer trigger for the weekly report (Monday 8 AM UTC CRON)</li>
+        <li><strong>Storage Account</strong> — required by the Function App runtime</li>
+      </ul>
+      <p>The App Service uses Azure platform-level access restrictions, allowing only specific IPs and the Azure Bot Service tag, with all other traffic denied. The web chat interface requires Entra ID sign-in, while the bot endpoint is secured by Bot Framework SDK token validation. Environment variables store all secrets (client secrets, API keys, Cosmos keys)—nothing is hardcoded in the codebase.</p>
+
+      <h2 id="web-chat-interface">Web Chat Interface</h2>
+      <p>The standalone web chat provides the same capabilities as the Teams bot, accessible at the App Service URL. It features a dark-themed interface with quick-action buttons for common tasks (New User, Reset Password, Enforce MFA, Security Report, Audit Log), message streaming with typing indicators, and session persistence across page refreshes.</p>
+
+      <p><img src="images/web-chat-interface.jpg" alt="Web Chat Interface"></p>
+
+      <h2 id="teams-integration">Teams Integration</h2>
+      <p>M365 Guardian is packaged as a custom Teams app with a manifest, bot registration, and icon set. Technicians can chat with the bot directly in Teams personal chat, using the same natural language they’d use in the web interface. The bot supports command suggestions and the welcome message guides new users through available capabilities.</p>
+
+      <p><img src="images/teams-bot-chat.jpg" alt="Teams Bot Chat"></p>
+
+      <h2 id="llm-provider-flexibility">LLM Provider Flexibility</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Provider</th>
+            <th>LLM_PROVIDER</th>
+            <th>Required Env Var</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>xAI / Grok (current)</td>
+            <td>xai</td>
+            <td>XAI_API_KEY</td>
+          </tr>
+          <tr>
+            <td>Anthropic Claude</td>
+            <td>anthropic</td>
+            <td>ANTHROPIC_API_KEY</td>
+          </tr>
+          <tr>
+            <td>Azure OpenAI</td>
+            <td>azure_openai</td>
+            <td>AZURE_OPENAI_API_KEY</td>
+          </tr>
+          <tr>
+            <td>OpenAI</td>
+            <td>openai</td>
+            <td>OPENAI_API_KEY</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>No code changes, no redeployment of the application—just update the environment variables and restart the App Service. This was validated by switching between providers during development.</p>
+
+      <h2 id="results">Results</h2>
+      <ul>
+        <li><strong>User creation with mailbox provisioning</strong> — natural language to Graph API in under 5 seconds, including license assignment and MFA enforcement</li>
+        <li><strong>Password resets with proactive security warnings</strong> — the bot detects missing MFA and recommends enforcement before the technician asks</li>
+        <li><strong>Full audit trail</strong> — every tool call logged to Cosmos DB with technician identity, tool arguments (passwords redacted), result summary, and timestamp</li>
+        <li><strong>Weekly security report</strong> — all 10 checks running against the live tenant, generating actionable findings with severity ratings</li>
+        <li><strong>Dual interface</strong> — identical functionality through both the web chat and Teams bot</li>
+      </ul>
+      <p>The confirmation-before-execution pattern successfully prevents accidental writes during use—with every destructive action required explicit approval.</p>
+
+      <h2 id="source-code">Source Code</h2>
+      <p>The complete codebase is available on GitHub: <a href="https://github.com/marky224/m365-guardian" target="_blank">github.com/marky224/m365-guardian</a></p>
+
+      <h2 id="conclusion">Conclusion</h2>
+      <p>M365 Guardian proves that an LLM-powered administration tool can be both powerful and safe. The combination of natural language understanding, mandatory confirmation gates, and full audit logging creates a system that’s faster than the admin portal, more accessible than PowerShell, and more auditable than either. For MSP technicians managing multiple Microsoft 365 tenants, a tool like this transforms repetitive admin tasks into simple conversations—while ensuring no action is taken without explicit human approval.</p>
+      <p>The application establishes the foundation for Phase 2 features: SharePoint and OneDrive management, Conditional Access policy creation, RAG-powered documentation lookup, and multi-tenant support for MSP environments.</p>
+
+      <h1 id="marks-project-portfolio"><a href="https://markandrewmarquez.com/portfolio/">Mark’s Project Portfolio</a></h1>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-wrapper">
+      <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="external">Hugo</a> and the <a href="https://github.com/bjacquemet/personal-web" target='_blank' rel="external">Personal Web</a> theme.</p>
+      <p>© Mark Marquez</p>
+    </div>
+  </footer>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:500,600|Raleway:400,400i,600" rel="stylesheet">
+</body>
+</html>
+```
