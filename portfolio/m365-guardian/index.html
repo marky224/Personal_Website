@@ -135,7 +135,7 @@
       <ul>
         <li><strong>Backend</strong>: Python 3.11 on Azure App Service (Linux, B1 tier)</li>
         <li><strong>LLM Orchestration</strong>: LiteLLM with xAI Grok (grok-4-1-fast-reasoning)</li>
-        <li><strong>Microsoft Graph SDK</strong>: msgraph-sdk for Entra ID and Exchange Online operations</li>
+        <li><strong>Microsoft Graph SDK</strong>: msgraph-sdk v1.x with Kiota-based RequestConfiguration objects for Entra ID and Exchange Online operations</li>
         <li><strong>Bot Framework</strong>: botbuilder-core for Microsoft Teams integration</li>
         <li><strong>Web Framework</strong>: aiohttp for the async REST API and web chat</li>
         <li><strong>Audit Storage</strong>: Azure Cosmos DB (session history and action audit logs)</li>
@@ -150,7 +150,7 @@
       <p>Write operations—all requiring explicit “Type YES to proceed” confirmation—include creating users, updating properties, deleting accounts, resetting passwords, enforcing MFA, assigning and removing licenses, managing group memberships, managing shared mailboxes and distribution groups, bulk operations on up to 50 users, and sending reports to Teams channels or email.</p>
 
       <h2 id="the-confirmation-flow-security-by-design">The Confirmation Flow: Security by Design</h2>
-      <p>The core safety mechanism is the mandatory confirmation loop. When a technician requests any write action, the bot presents a structured summary showing exactly what will change, lists security implications, and asks for explicit “YES” confirmation before executing. This is enforced at the LLM system prompt level and at the tool executor level—write tools are classified in a <code>WRITE_TOOLS</code> set and treated differently from read operations.</p>
+      <p>The core safety mechanism is the mandatory confirmation loop. When a technician requests any write action, the bot presents a structured summary showing exactly what will change, lists security implications, and asks for explicit "YES" confirmation before executing. The confirmation is case-sensitive—typing "yes" or "Yes" is rejected, preventing accidental execution. This is enforced at the LLM system prompt level and at the tool executor level—write tools are classified in a <code>WRITE_TOOLS</code> set and treated differently from read operations.</p>
       <pre><code>┌─────────────────────────────────────────┐
 │  M365 GUARDIAN — ACTION SUMMARY         │
 ├─────────────────────────────────────────┤
@@ -198,8 +198,10 @@
         <li><strong>Azure Bot Service</strong> — SingleTenant registration bridging Teams to the App Service</li>
         <li><strong>Azure Function App</strong> — timer trigger for the weekly report (Monday 8 AM UTC CRON)</li>
         <li><strong>Storage Account</strong> — required by the Function App runtime</li>
+        <li><strong>Entra ID Role Assignment</strong> — the M365 Guardian service principal requires the <strong>Helpdesk Administrator</strong> directory role for password reset operations, in addition to Graph API application permissions. Without this role, password resets return a 403 <code>Authorization_RequestDenied</code> error even with <code>User.ReadWrite.All</code> granted. This role limits resets to non-admin users by design, maintaining least-privilege access.</li>
       </ul>
-      <p>The App Service uses Azure platform-level access restrictions, allowing only specific IPs and the Azure Bot Service tag, with all other traffic denied. The web chat interface requires Entra ID sign-in, while the bot endpoint is secured by Bot Framework SDK token validation. Environment variables store all secrets (client secrets, API keys, Cosmos keys)—nothing is hardcoded in the codebase.</p>
+
+      <p>The App Service uses Azure platform-level access restrictions, allowing only specific IPs and the Azure Bot Service tag, with all other traffic denied. The web chat interface requires Entra ID sign-in, while the bot endpoint is secured by Bot Framework SDK token validation. Environment variables store all secrets (client secrets, API keys, Cosmos keys)—nothing is hardcoded in the codebase. Deployment requires <code>SCM_DO_BUILD_DURING_DEPLOYMENT=true</code> to ensure Azure's Oryx build system installs Python dependencies during deployment, and the runtime must be pinned to Python 3.11.</p>
 
       <h2 id="web-chat-interface">Web Chat Interface</h2>
       <p>The standalone web chat provides the same capabilities as the Teams bot, accessible at the App Service URL. It features a dark-themed interface with quick-action buttons for common tasks (New User, Reset Password, Enforce MFA, Security Report, Audit Log), message streaming with typing indicators, and session persistence across page refreshes.</p>
@@ -248,18 +250,20 @@
       <h2 id="results">Results</h2>
       <ul>
         <li><strong>User creation with mailbox provisioning</strong> — natural language to Graph API in under 5 seconds, including license assignment and MFA enforcement</li>
-        <li><strong>Password resets with proactive security warnings</strong> — the bot detects missing MFA and recommends enforcement before the technician asks</li>
+        <li><strong>Password resets with proactive security warnings</strong> — the bot detects missing MFA and recommends enforcement before the technician asks, with case-sensitive "YES" confirmation preventing accidental execution</li>
+        <li><strong>User search and details</strong> — free-text and OData filter searches across Entra ID, with detailed profiles showing MFA methods, sign-in activity, license assignments, and group memberships</li>
         <li><strong>Full audit trail</strong> — every tool call logged to Cosmos DB with technician identity, tool arguments (passwords redacted), result summary, and timestamp</li>
-        <li><strong>Weekly security report</strong> — all 10 checks running against the live tenant, generating actionable findings with severity ratings</li>
-        <li><strong>Dual interface</strong> — identical functionality through both the web chat and Teams bot</li>
+        <li><strong>Weekly security report</strong> — all 10 checks running against the live tenant, identifying MFA compliance gaps, unused licenses, and dormant accounts with severity ratings and "Fix with M365 Guardian" action links</li>
+        <li><strong>Dual interface</strong> — identical functionality through both the web chat and Teams bot, validated end-to-end during PoC testing</li>
       </ul>
+
       <p>The confirmation-before-execution pattern successfully prevents accidental writes during use—with every destructive action required explicit approval.</p>
 
       <h2 id="source-code">Source Code</h2>
       <p>The complete codebase is available on GitHub: <a href="https://github.com/marky224/m365-guardian" target="_blank">github.com/marky224/m365-guardian</a></p>
 
       <h2 id="conclusion">Conclusion</h2>
-      <p>M365 Guardian proves that an LLM-powered administration tool can be both powerful and safe. The combination of natural language understanding, mandatory confirmation gates, and full audit logging creates a system that’s faster than the admin portal, more accessible than PowerShell, and more auditable than either. For MSP technicians managing multiple Microsoft 365 tenants, a tool like this transforms repetitive admin tasks into simple conversations—while ensuring no action is taken without explicit human approval.</p>
+      <p>M365 Guardian proves that an LLM-powered administration tool can be both powerful and safe. The PoC validated all three target scenarios—user creation with mailbox provisioning, password reset with MFA enforcement, and automated weekly security reporting—running against a live Microsoft 365 tenant with 20 test users. The combination of natural language understanding, mandatory confirmation gates, and full audit logging creates a system that's faster than the admin portal, more accessible than PowerShell, and more auditable than either. For MSP technicians managing multiple Microsoft 365 tenants, a tool like this transforms repetitive admin tasks into simple conversations—while ensuring no action is taken without explicit human approval.</p>
       <p>The application establishes the foundation for Phase 2 features: SharePoint and OneDrive management, Conditional Access policy creation, RAG-powered documentation lookup, and multi-tenant support for MSP environments.</p>
 
       <h1 id="marks-project-portfolio"><a href="https://markandrewmarquez.com/portfolio/">Mark’s Project Portfolio</a></h1>
